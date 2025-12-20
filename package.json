@@ -1,11 +1,14 @@
 {
   "name": "offline-ai-mobile-aedi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline AI Mobile Application - Antwerp Designs Ecosystems Ionity",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "package": "npm run package:tar && npm run package:zip",
+    "package:tar": "mkdir -p dist && tar -czf dist/offline-ai-mobile-aedi-v1.01.tar.gz --exclude='node_modules' --exclude='.git' --exclude='dist' --exclude='*.log' .",
+    "package:zip": "mkdir -p dist && zip -r dist/offline-ai-mobile-aedi-v1.01.zip . -x 'node_modules/*' '.git/*' 'dist/*' '*.log'"
   },
   "keywords": [
     "offline",
@@ -16,6 +19,10 @@
   ],
   "author": "Antwerp Designs Ionity",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AntwerpDesignsIonity/Offline-Ai-Mobile-Antwerp-Designs-Ecosystems-Ionity-AEDI.git"
+  },
   "dependencies": {
     "express": "^4.18.2"
   }
