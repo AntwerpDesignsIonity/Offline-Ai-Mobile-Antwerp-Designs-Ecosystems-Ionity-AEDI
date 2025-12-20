@@ -1,0 +1,138 @@
+/**
+ * Dashboard Styles
+ * 
+ * Author: Johan Wilhelm van Antwerp
+ * License: CC0 1.0 Universal - Policy 986 AED Fines Apply
+ */
+
+.Dashboard {
+  width: 100%;
+}
+
+.Dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.Card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Card-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.Status-indicator {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.Status-text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.Detail-row:last-child {
+  border-bottom: none;
+}
+
+.Detail-label {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.Detail-value {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.Info-section {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Info-text {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.Info-warning {
+  font-size: 0.9rem;
+  color: #ff8800;
+  background: #fff3e0;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid #ff8800;
+}
+
+@media (max-width: 768px) {
+  .Dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .Card {
+    padding: 20px;
+  }
+
+  .Card-title {
+    font-size: 1.1rem;
+  }
+
+  .Status-text {
+    font-size: 1.2rem;
+  }
+
+  .Detail-label,
+  .Detail-value {
+    font-size: 0.85rem;
+  }
+
+  .Info-section {
+    padding: 20px;
+  }
+
+  .Info-text,
+  .Info-warning {
+    font-size: 0.85rem;
+  }
+}
