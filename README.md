@@ -66,7 +66,7 @@ Example configuration:
   "appName": "Offline AI Mobile AEDI",
   "installDirectories": {
     "primary": "/United Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
-    "secondary": "/Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
+    "secondary": "/United Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
     "installSubpath": "Install/files"
   },
   "modelSettings": {
