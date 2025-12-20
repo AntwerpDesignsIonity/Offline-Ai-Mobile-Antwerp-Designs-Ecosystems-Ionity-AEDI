@@ -5,7 +5,7 @@
 **Project Name:** Offline AI Mobile - Antwerp Designs Ecosystems Ionity (AEDI)  
 **Repository:** NetworkZeroMonitor  
 **Version:** 1.0.0  
-**Status:** Active Development
+**Status:** Planning & Documentation Phase
 
 ## Description
 
@@ -31,7 +31,7 @@ AEDI (Antwerp Designs Ecosystems Ionity) is an offline AI mobile application eco
 
 ## License
 
-Please refer to LICENSE file for licensing information.
+License information to be determined.
 
 ## Contact
 

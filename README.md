@@ -5,9 +5,9 @@
   
   **Offline AI Mobile - Antwerp Designs Ecosystems Ionity (AEDI)**
   
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+  [![License](https://img.shields.io/badge/license-To%20Be%20Determined-blue.svg)](META.md)
   [![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](META.md)
-  [![Status](https://img.shields.io/badge/status-active-success.svg)](META.md)
+  [![Status](https://img.shields.io/badge/status-planning-yellow.svg)](META.md)
 </div>
 
 ---
@@ -36,6 +36,8 @@ This repository includes comprehensive documentation to help you get started:
 
 ## 🚀 Quick Start
 
+> **Note**: This project is currently in the planning and documentation phase. The installation steps below represent the planned workflow once the project structure is fully implemented.
+
 ### Prerequisites
 
 Before you begin, ensure you meet the minimum system requirements:
@@ -45,7 +47,7 @@ Before you begin, ensure you meet the minimum system requirements:
 
 For complete requirements, see [SYSTEM_REQUIREMENTS.md](SYSTEM_REQUIREMENTS.md).
 
-### Installation
+### Installation (Planned)
 
 1. Clone the repository:
 ```bash
@@ -113,6 +115,8 @@ For complete specifications, see [SYSTEM_REQUIREMENTS.md](SYSTEM_REQUIREMENTS.md
 
 ## 🛠️ Development
 
+> **Note**: The commands below are planned for future implementation.
+
 ### Building for Android
 ```bash
 npm run android:build
@@ -146,7 +150,7 @@ We welcome contributions to the AEDI project! Please ensure your development env
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+License information to be determined. Please check back later for licensing details.
 
 ## 📧 Contact
 

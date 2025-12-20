@@ -2,6 +2,8 @@
 
 This guide provides step-by-step instructions for installing and setting up the AEDI (Antwerp Designs Ecosystems Ionity) - Offline AI Mobile Network Monitor.
 
+> **Important**: This installation guide represents the planned installation process. The project is currently in the documentation and planning phase. Commands and steps will become available as the project structure is implemented.
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
