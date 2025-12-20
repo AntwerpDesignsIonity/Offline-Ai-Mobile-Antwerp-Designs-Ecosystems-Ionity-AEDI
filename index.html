@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="af">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Afrikaans words with interactive exercises and games">
+    <meta name="theme-color" content="#FF6B35">
+    <title>Leer Afrikaans - Word Learning App</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🇿🇦 Leer Afrikaans</h1>
+            <p class="tagline">Master Afrikaans vocabulary with fun and interactive exercises</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-mode="flashcards">
+                📇 Flashcards
+            </button>
+            <button class="nav-tab" data-mode="quiz">
+                ✏️ Quiz
+            </button>
+            <button class="nav-tab" data-mode="matching">
+                🎯 Matching
+            </button>
+            <button class="nav-tab" data-mode="stats">
+                📊 Stats
+            </button>
+        </nav>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <label for="difficulty-select">Difficulty:</label>
+            <select id="difficulty-select" class="difficulty-select">
+                <option value="beginner">Beginner (100 words)</option>
+                <option value="intermediate">Intermediate (200 words)</option>
+                <option value="advanced">Advanced (300 words)</option>
+            </select>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Flashcards Mode -->
+            <div id="flashcards-mode" class="mode-content active">
+                <div class="flashcard-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="flashcard-progress"></div>
+                    </div>
+                    <p class="progress-text" id="flashcard-counter">Card 1 of 10</p>
+                    
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <h2 id="flashcard-word">hond</h2>
+                                <button class="speak-btn" id="speak-btn" title="Listen to pronunciation">🔊</button>
+                            </div>
+                            <div class="flashcard-back">
+                                <h2 id="flashcard-translation">dog</h2>
+                                <p class="example-sentence" id="flashcard-example">Die hond is groot.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="flip-hint">Click card to flip</p>
+                    
+                    <div class="flashcard-controls">
+                        <button class="btn btn-secondary" id="flashcard-prev">← Previous</button>
+                        <button class="btn btn-success" id="flashcard-know">I Know This</button>
+                        <button class="btn btn-primary" id="flashcard-next">Next →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Mode -->
+            <div id="quiz-mode" class="mode-content">
+                <div class="quiz-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quiz-progress"></div>
+                    </div>
+                    <p class="progress-text" id="quiz-counter">Question 1 of 10</p>
+                    
+                    <div class="quiz-question">
+                        <h2 id="quiz-question-text">What is the English translation of "hond"?</h2>
+                        <div class="quiz-options" id="quiz-options">
+                            <button class="quiz-option">dog</button>
+                            <button class="quiz-option">cat</button>
+                            <button class="quiz-option">bird</button>
+                            <button class="quiz-option">fish</button>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback" id="quiz-feedback"></div>
+                    
+                    <div class="quiz-controls">
+                        <button class="btn btn-primary" id="quiz-next" style="display: none;">Next Question →</button>
+                        <button class="btn btn-secondary" id="quiz-restart" style="display: none;">Restart Quiz</button>
+                    </div>
+                    
+                    <div class="quiz-score">
+                        Score: <span id="quiz-score">0</span> / <span id="quiz-total">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matching Game Mode -->
+            <div id="matching-mode" class="mode-content">
+                <div class="matching-container">
+                    <div class="matching-header">
+                        <p class="progress-text">Match the Afrikaans words with their English translations</p>
+                        <p class="matching-score">Matches: <span id="matching-score">0</span> / <span id="matching-total">6</span></p>
+                        <p class="timer">Time: <span id="matching-timer">0:00</span></p>
+                    </div>
+                    
+                    <div class="matching-grid" id="matching-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                    
+                    <div class="matching-controls">
+                        <button class="btn btn-primary" id="matching-restart">New Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Mode -->
+            <div id="stats-mode" class="mode-content">
+                <div class="stats-container">
+                    <h2>📊 Your Learning Progress</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-value" id="total-words-learned">0</div>
+                            <div class="stat-label">Words Learned</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value" id="quiz-accuracy">0%</div>
+                            <div class="stat-label">Quiz Accuracy</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-value" id="total-quizzes">0</div>
+                            <div class="stat-label">Quizzes Completed</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-value" id="best-matching-time">--</div>
+                            <div class="stat-label">Best Matching Time</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-actions">
+                        <button class="btn btn-danger" id="reset-progress">Reset All Progress</button>
+                    </div>
+                    
+                    <div class="vocabulary-list">
+                        <h3>Known Words</h3>
+                        <div id="known-words-list" class="word-list"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ for Afrikaans learners | Offline-capable PWA</p>
+        </footer>
+    </div>
+
+    <script src="vocabulary.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Register service worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "afrikaans-word-learning-webapp",
+  "version": "1.0.0",
+  "description": "A comprehensive Afrikaans word learning web application with offline capabilities",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -c-1",
+    "test": "echo \"No automated tests configured\" && exit 0"
+  },
+  "keywords": [
+    "afrikaans",
+    "language-learning",
+    "education",
+    "offline-first",
+    "webapp"
+  ],
+  "author": "Antwerp Designs Ionity",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
