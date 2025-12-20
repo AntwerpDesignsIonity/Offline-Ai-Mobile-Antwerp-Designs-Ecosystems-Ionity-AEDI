@@ -3,7 +3,28 @@ const path = require('path');
 
 class ModelManager {
   constructor(configPath = './config.json') {
-    this.config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    try {
+      this.config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    } catch (error) {
+      console.error(`Failed to load config from ${configPath}: ${error.message}`);
+      // Use default configuration
+      this.config = {
+        installDirectories: {
+          primary: "/United Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
+          secondary: "/Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
+          installSubpath: "Install/files"
+        },
+        modelSettings: {
+          blobFileFolder: "models/blobs",
+          updateInterval: 3600000,
+          offlineMode: true
+        },
+        ui: {
+          enableOfflineButton: true,
+          defaultOfflineState: false
+        }
+      };
+    }
     this.models = [];
     this.offlineMode = this.config.ui.defaultOfflineState;
   }
