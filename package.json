@@ -1,0 +1,22 @@
+{
+  "name": "offline-ai-mobile-aedi",
+  "version": "1.0.0",
+  "description": "Offline AI Mobile Application - Antwerp Designs Ecosystems Ionity",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "offline",
+    "ai",
+    "mobile",
+    "antwerp",
+    "ionity"
+  ],
+  "author": "Antwerp Designs Ionity",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
