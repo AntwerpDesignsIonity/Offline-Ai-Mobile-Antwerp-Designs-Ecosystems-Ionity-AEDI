@@ -1,0 +1,12 @@
+# Attribution metadata
+* text=auto
+
+# Ensure attribution is maintained in all files
+*.md text eol=lf
+*.txt text eol=lf
+
+# Copyright and attribution files
+AUTHORS text eol=lf
+COPYRIGHT text eol=lf
+LICENSE text eol=lf
+NOTICE text eol=lf
