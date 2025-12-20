@@ -1,0 +1,154 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: aedi-postgres
+    environment:
+      POSTGRES_DB: aedi_platform
+      POSTGRES_USER: aedi_user
+      POSTGRES_PASSWORD: aedi_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../../database/schemas/postgresql:/docker-entrypoint-initdb.d
+    networks:
+      - aedi-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aedi_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:6
+    container_name: aedi-mongodb
+    environment:
+      MONGO_INITDB_DATABASE: aedi_platform
+      MONGO_INITDB_ROOT_USERNAME: aedi_user
+      MONGO_INITDB_ROOT_PASSWORD: aedi_password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - aedi-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: aedi-redis
+    command: redis-server --requirepass aedi_password
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - aedi-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  api:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: aedi-api
+    environment:
+      NODE_ENV: development
+      POSTGRES_HOST: postgres
+      MONGODB_URI: mongodb://aedi_user:aedi_password@mongodb:27017/aedi_platform
+      REDIS_HOST: redis
+      REDIS_PASSWORD: aedi_password
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../backend:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - aedi-network
+    command: npm run dev
+
+  # Web Application
+  web:
+    build:
+      context: ../../web-apps
+      dockerfile: Dockerfile
+    container_name: aedi-web
+    environment:
+      NODE_ENV: development
+      REACT_APP_API_URL: http://localhost:3000
+    ports:
+      - "3001:3000"
+    volumes:
+      - ../../web-apps:/app
+      - /app/node_modules
+    depends_on:
+      - api
+    networks:
+      - aedi-network
+    command: npm run dev
+
+  # AI Service
+  ai-service:
+    build:
+      context: ../../ai-modules
+      dockerfile: Dockerfile
+    container_name: aedi-ai
+    environment:
+      PYTHON_ENV: development
+      MODEL_PATH: /models
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../ai-modules:/app
+      - ai_models:/models
+    depends_on:
+      - api
+    networks:
+      - aedi-network
+    command: python serve.py
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: aedi-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ../../../certs:/etc/nginx/certs
+    depends_on:
+      - web
+      - api
+    networks:
+      - aedi-network
+
+volumes:
+  postgres_data:
+  mongodb_data:
+  redis_data:
+  ai_models:
+
+networks:
+  aedi-network:
+    driver: bridge

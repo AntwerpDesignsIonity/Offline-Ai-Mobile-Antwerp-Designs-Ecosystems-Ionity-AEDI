@@ -1,0 +1,172 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.test
+.env*.local
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directories
+coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+
+# Testing
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# Docker
+.docker/
+*.dockerfile.swp
+
+# Certificates & Keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+certs/
+secrets/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+.temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Mobile
+*.ipa
+*.apk
+*.aab
+ios/Pods/
+android/.gradle/
+android/build/
+android/app/build/
+ios/build/
+
+# AI Models (large files)
+*.h5
+*.pb
+*.onnx
+*.tflite
+*.pt
+*.pth
+*.safetensors
+models/*.bin
+models/*.model
+*.joblib
+*.pkl
+*.pickle
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Kubernetes
+*.kubeconfig
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Media files (if not needed)
+# Uncomment if you don't want to track media
+# *.mp4
+# *.mov
+# *.avi
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+
+# Documentation build
+docs/_build/
+site/
+
+# Package manager
+package-lock.json.backup
+yarn.lock.backup

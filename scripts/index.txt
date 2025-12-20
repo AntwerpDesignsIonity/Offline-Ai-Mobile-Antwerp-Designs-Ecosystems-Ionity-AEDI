@@ -1,0 +1,312 @@
+SCRIPTS INDEX
+=============
+
+This directory contains automation scripts, utilities, and setup tools for the AEDI platform.
+
+STRUCTURE:
+----------
+/setup/             - Initial setup scripts
+  /install.sh       - Main installation script
+  /configure.sh     - Configuration script
+  /init-db.sh       - Database initialization
+  
+/deployment/        - Deployment scripts
+  /deploy-dev.sh    - Deploy to development
+  /deploy-staging.sh - Deploy to staging
+  /deploy-prod.sh   - Deploy to production
+  
+/database/          - Database management scripts
+  /migrate.sh       - Run migrations
+  /seed.sh          - Seed database
+  /backup.sh        - Backup database
+  /restore.sh       - Restore from backup
+  
+/docker/            - Docker utility scripts
+  /build.sh         - Build Docker images
+  /push.sh          - Push to registry
+  /clean.sh         - Clean up containers
+  
+/ai/                - AI-related scripts
+  /train-model.py   - Train ML models
+  /evaluate.py      - Evaluate models
+  /deploy-model.sh  - Deploy models
+  
+/testing/           - Testing scripts
+  /run-tests.sh     - Run all tests
+  /e2e-tests.sh     - End-to-end tests
+  /load-test.sh     - Load testing
+  
+/maintenance/       - Maintenance scripts
+  /cleanup.sh       - Clean up old data
+  /optimize.sh      - Optimize database
+  /health-check.sh  - System health check
+
+SETUP SCRIPTS:
+--------------
+Initial Installation:
+```bash
+#!/bin/bash
+# install.sh - Main installation script
+
+echo "Installing AEDI Platform..."
+
+# Check prerequisites
+command -v node >/dev/null 2>&1 || { echo "Node.js required"; exit 1; }
+command -v docker >/dev/null 2>&1 || { echo "Docker required"; exit 1; }
+
+# Install dependencies
+npm install
+
+# Setup directories
+mkdir -p logs data temp
+
+# Copy environment file
+cp .env.example .env
+
+echo "Installation complete!"
+echo "Please configure .env file and run ./scripts/setup/configure.sh"
+```
+
+Configuration:
+```bash
+#!/bin/bash
+# configure.sh - Configuration script
+
+echo "Configuring AEDI Platform..."
+
+# Validate environment variables
+source .env
+
+# Initialize databases
+./scripts/setup/init-db.sh
+
+# Generate secrets
+openssl rand -base64 32 > .jwt-secret
+
+echo "Configuration complete!"
+```
+
+DEPLOYMENT SCRIPTS:
+-------------------
+Deploy to Production:
+```bash
+#!/bin/bash
+# deploy-prod.sh - Production deployment
+
+set -e
+
+echo "Deploying to Production..."
+
+# Build
+npm run build
+
+# Run tests
+npm run test
+
+# Build Docker images
+docker-compose -f infrastructure/docker/compose/docker-compose.yml build
+
+# Push to registry
+docker-compose -f infrastructure/docker/compose/docker-compose.yml push
+
+# Deploy to Kubernetes
+kubectl apply -f infrastructure/kubernetes/production/
+
+# Verify deployment
+kubectl rollout status deployment/aedi-api -n production
+
+echo "Deployment complete!"
+```
+
+DATABASE SCRIPTS:
+-----------------
+Migration:
+```bash
+#!/bin/bash
+# migrate.sh - Run database migrations
+
+echo "Running migrations..."
+
+# PostgreSQL migrations
+cd database
+npx node-pg-migrate up
+
+# MongoDB migrations
+node migrations/mongodb/migrate.js
+
+echo "Migrations complete!"
+```
+
+Backup:
+```bash
+#!/bin/bash
+# backup.sh - Database backup
+
+BACKUP_DIR="./backups/$(date +%Y%m%d_%H%M%S)"
+mkdir -p $BACKUP_DIR
+
+# PostgreSQL backup
+pg_dump -h localhost -U aedi_user aedi_platform > $BACKUP_DIR/postgres.sql
+
+# MongoDB backup
+mongodump --uri="mongodb://localhost:27017/aedi_platform" --out=$BACKUP_DIR/mongodb
+
+echo "Backup saved to $BACKUP_DIR"
+```
+
+AI SCRIPTS:
+-----------
+Train Model:
+```python
+#!/usr/bin/env python3
+# train-model.py - Train ML models
+
+import sys
+import argparse
+from ai_modules.training import Trainer
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', required=True, help='Model name')
+    parser.add_argument('--data', required=True, help='Training data path')
+    parser.add_argument('--epochs', type=int, default=10)
+    args = parser.parse_args()
+    
+    trainer = Trainer(args.model)
+    trainer.load_data(args.data)
+    trainer.train(epochs=args.epochs)
+    trainer.save()
+    
+    print(f"Model {args.model} trained successfully!")
+
+if __name__ == '__main__':
+    main()
+```
+
+TESTING SCRIPTS:
+----------------
+Run All Tests:
+```bash
+#!/bin/bash
+# run-tests.sh - Execute all tests
+
+echo "Running tests..."
+
+# Unit tests
+npm run test:unit
+
+# Integration tests
+npm run test:integration
+
+# E2E tests
+npm run test:e2e
+
+# AI model tests
+cd ai-modules && python -m pytest
+
+echo "All tests complete!"
+```
+
+MAINTENANCE SCRIPTS:
+--------------------
+Cleanup:
+```bash
+#!/bin/bash
+# cleanup.sh - Clean up old data
+
+echo "Cleaning up..."
+
+# Remove old logs (older than 30 days)
+find logs/ -name "*.log" -mtime +30 -delete
+
+# Clean Docker
+docker system prune -f
+
+# Clean npm cache
+npm cache clean --force
+
+echo "Cleanup complete!"
+```
+
+Health Check:
+```bash
+#!/bin/bash
+# health-check.sh - System health check
+
+echo "Performing health check..."
+
+# Check API
+curl -f http://localhost:3000/health || echo "API down"
+
+# Check database
+psql -h localhost -U aedi_user -d aedi_platform -c "SELECT 1" || echo "Database down"
+
+# Check Redis
+redis-cli ping || echo "Redis down"
+
+# Check disk space
+df -h
+
+# Check memory
+free -h
+
+echo "Health check complete!"
+```
+
+UTILITY FUNCTIONS:
+------------------
+Common utilities included in scripts:
+- Error handling
+- Logging
+- Progress indicators
+- Retry mechanisms
+- Notification sending
+- Environment validation
+
+USAGE:
+------
+Make scripts executable:
+```bash
+chmod +x scripts/**/*.sh
+```
+
+Run scripts:
+```bash
+# Setup
+./scripts/setup/install.sh
+
+# Deploy
+./scripts/deployment/deploy-prod.sh
+
+# Backup
+./scripts/database/backup.sh
+
+# Train AI model
+python scripts/ai/train-model.py --model sentiment --data ./data/training/
+```
+
+BEST PRACTICES:
+---------------
+- Always use set -e for error handling
+- Validate inputs and environment
+- Log all operations
+- Use meaningful exit codes
+- Include rollback procedures
+- Test in staging first
+- Document all parameters
+
+AUTOMATION:
+-----------
+Cron Jobs:
+```cron
+# Daily backup at 2 AM
+0 2 * * * /path/to/scripts/database/backup.sh
+
+# Weekly cleanup on Sunday
+0 0 * * 0 /path/to/scripts/maintenance/cleanup.sh
+
+# Hourly health check
+0 * * * * /path/to/scripts/maintenance/health-check.sh
+```
+
+For detailed documentation, see /docs/scripts/

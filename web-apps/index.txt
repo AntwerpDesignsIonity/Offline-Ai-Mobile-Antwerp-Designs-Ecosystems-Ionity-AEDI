@@ -1,0 +1,73 @@
+WEB APPLICATIONS INDEX
+======================
+
+This directory contains all web application components for the AEDI platform.
+
+STRUCTURE:
+----------
+/frontend/          - Frontend applications
+  /react-app/       - Main React application
+  /vue-dashboard/   - Admin dashboard (Vue.js)
+  /pwa/             - Progressive Web App components
+  /components/      - Shared UI components
+  /assets/          - Static assets (images, fonts, etc.)
+
+/api-gateway/       - API gateway and routing
+/websocket/         - Real-time WebSocket server
+/cdn/               - CDN configuration and assets
+
+AI ENHANCEMENTS:
+----------------
+- Intelligent UI/UX recommendations
+- Automated accessibility testing
+- Performance optimization suggestions
+- User behavior analytics
+- Personalized content delivery
+- Chatbot integration
+- Voice interface support
+
+TECHNOLOGIES:
+-------------
+- React 18+ with TypeScript
+- Vue.js 3 with Composition API
+- TailwindCSS for styling
+- Redux Toolkit for state management
+- React Query for data fetching
+- Socket.io for real-time features
+- PWA Service Workers
+- Web Assembly for performance-critical tasks
+
+FEATURES:
+---------
+- Responsive design (mobile-first)
+- Offline capability
+- Real-time updates
+- AI-powered search
+- Natural language processing
+- Image recognition
+- Predictive analytics dashboards
+- Intelligent forms and validation
+
+GETTING STARTED:
+----------------
+1. Navigate to /frontend/react-app/
+2. Run: npm install
+3. Configure: Copy .env.example to .env
+4. Start dev server: npm run dev
+5. Build for production: npm run build
+
+API INTEGRATION:
+----------------
+- RESTful endpoints: /backend/api/
+- GraphQL endpoint: /graphql
+- WebSocket connection: ws://localhost:3001
+- Authentication: JWT tokens
+
+DEPLOYMENT:
+-----------
+- Docker containers available
+- Kubernetes manifests in /infrastructure/k8s/
+- CI/CD via GitHub Actions
+- CDN deployment for static assets
+
+For detailed documentation, see /docs/web-apps/
