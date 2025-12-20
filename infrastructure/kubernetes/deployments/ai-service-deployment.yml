@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aedi-ai-service
+  namespace: aedi-platform
+  labels:
+    app: aedi-ai
+    component: ml-inference
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aedi-ai
+  template:
+    metadata:
+      labels:
+        app: aedi-ai
+        component: ml-inference
+    spec:
+      containers:
+      - name: ai-service
+        image: aedi-platform/ai:latest
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: PYTHON_ENV
+          value: "production"
+        - name: MODEL_PATH
+          value: "/models"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        volumeMounts:
+        - name: models
+          mountPath: /models
+          readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 5
+      volumes:
+      - name: models
+        persistentVolumeClaim:
+          claimName: ai-models-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aedi-ai-service
+  namespace: aedi-platform
+  labels:
+    app: aedi-ai
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: aedi-ai
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ai-models-pvc
+  namespace: aedi-platform
+spec:
+  accessModes:
+  - ReadOnlyMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard
