@@ -1,0 +1,100 @@
+MOBILE APPLICATIONS INDEX
+=========================
+
+This directory contains all mobile application components for the AEDI platform.
+
+STRUCTURE:
+----------
+/react-native/      - React Native cross-platform app
+  /src/             - Source code
+  /ios/             - iOS-specific code
+  /android/         - Android-specific code
+  /components/      - Shared components
+  
+/flutter/           - Flutter app (alternative)
+/native-ios/        - Native iOS Swift app
+/native-android/    - Native Android Kotlin app
+/shared-libs/       - Shared native modules
+
+AI ENHANCEMENTS:
+----------------
+- On-device ML models (TensorFlow Lite, Core ML)
+- Offline AI inference
+- Smart notifications
+- Voice commands and speech recognition
+- AR/VR integration
+- Image and video processing
+- Predictive user actions
+- Intelligent caching
+
+TECHNOLOGIES:
+-------------
+- React Native 0.72+
+- TypeScript
+- React Navigation
+- Redux Toolkit
+- Axios for API calls
+- AsyncStorage for local data
+- TensorFlow Lite for ML
+- Camera and Media APIs
+- Geolocation services
+- Push notifications (Firebase)
+
+FEATURES:
+---------
+- Offline-first architecture
+- Real-time synchronization
+- AI-powered camera features
+- Voice-to-text and text-to-voice
+- Biometric authentication
+- AR object recognition
+- Smart home integration
+- IoT device control
+- Predictive analytics
+- Natural language chat
+
+PLATFORM SUPPORT:
+-----------------
+- iOS 13+
+- Android 8.0+ (API Level 26+)
+- Tablet optimization
+- Apple Watch companion app
+- Android Wear support
+
+GETTING STARTED:
+----------------
+React Native:
+1. cd /react-native/
+2. npm install
+3. npx pod-install (iOS only)
+4. npm run ios / npm run android
+
+Flutter:
+1. cd /flutter/
+2. flutter pub get
+3. flutter run
+
+OFFLINE CAPABILITIES:
+---------------------
+- Local SQLite database
+- Offline-first sync with backend
+- Cached AI model inference
+- Queue-based API requests
+- Background sync workers
+
+AI MODEL DEPLOYMENT:
+--------------------
+- TensorFlow Lite models in /assets/models/
+- Core ML models for iOS
+- ONNX Runtime for cross-platform
+- Model versioning and updates
+- Edge computing optimization
+
+DEPLOYMENT:
+-----------
+- App Store (iOS): Fastlane automation
+- Google Play (Android): Automated via CI/CD
+- Over-the-air updates: CodePush
+- Beta testing: TestFlight, Firebase App Distribution
+
+For detailed documentation, see /docs/mobile-apps/

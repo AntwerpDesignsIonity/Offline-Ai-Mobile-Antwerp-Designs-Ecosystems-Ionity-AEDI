@@ -1,0 +1,78 @@
+# DOCUMENTATION INDEX
+====================
+
+This directory contains comprehensive documentation for the AEDI platform.
+
+## Structure
+----------
+/getting-started/   - Quick start guides and tutorials
+/architecture/      - System architecture documentation
+/api/               - API documentation and references
+/development/       - Development guides and best practices
+/deployment/        - Deployment and operations guides
+/security/          - Security documentation
+/troubleshooting/   - Common issues and solutions
+
+## Quick Links
+------------
+- [Getting Started](./getting-started/README.md)
+- [Architecture Overview](./architecture/README.md)
+- [API Reference](./api/README.md)
+- [Development Guide](./development/README.md)
+- [Deployment Guide](./deployment/README.md)
+
+## Documentation Sections
+
+### Getting Started
+- Installation guide
+- Quick start tutorial
+- Environment setup
+- First application
+
+### Architecture
+- System design overview
+- Component architecture
+- Data flow diagrams
+- Integration patterns
+- Scalability considerations
+
+### API Documentation
+- RESTful API endpoints
+- GraphQL schema
+- WebSocket events
+- Authentication
+- Rate limiting
+- Error codes
+
+### Development
+- Coding standards
+- Git workflow
+- Testing strategies
+- Debugging techniques
+- Performance optimization
+- AI model integration
+
+### Deployment
+- Docker deployment
+- Kubernetes deployment
+- Cloud platforms (AWS, Azure, GCP)
+- CI/CD pipelines
+- Monitoring and logging
+- Disaster recovery
+
+### Security
+- Authentication methods
+- Authorization patterns
+- Data encryption
+- Security best practices
+- Vulnerability management
+- Compliance
+
+### AI & Machine Learning
+- Model training
+- Model deployment
+- Inference optimization
+- AI service integration
+- Best practices
+
+For detailed documentation, navigate to the specific section directories.

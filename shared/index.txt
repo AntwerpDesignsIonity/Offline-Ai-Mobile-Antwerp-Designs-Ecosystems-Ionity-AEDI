@@ -1,0 +1,338 @@
+SHARED LIBRARIES INDEX
+======================
+
+This directory contains shared libraries and utilities used across all platforms in the AEDI platform.
+
+STRUCTURE:
+----------
+/utils/             - Common utility functions
+  /validators/      - Input validation utilities
+  /formatters/      - Data formatting functions
+  /converters/      - Type conversion utilities
+  
+/constants/         - Shared constants and enums
+/types/             - TypeScript type definitions
+/interfaces/        - API interface definitions
+/sdk/               - Platform SDKs
+  /js-sdk/          - JavaScript/TypeScript SDK
+  /python-sdk/      - Python SDK
+  /mobile-sdk/      - Mobile (React Native) SDK
+  
+/ai-sdk/            - AI utilities and helpers
+/api-client/        - API client libraries
+/hooks/             - React custom hooks (shared)
+/components/        - Shared UI components
+
+UTILITY MODULES:
+----------------
+Validators:
+- Email validation
+- Phone number validation
+- Data type validation
+- Schema validation (Joi, Yup)
+- Custom business logic validators
+
+Formatters:
+- Date/time formatting
+- Currency formatting
+- Number formatting
+- String manipulation
+- Data serialization
+
+Error Handling:
+- Custom error classes
+- Error logging utilities
+- Error reporting
+- Retry mechanisms
+- Graceful degradation
+
+Authentication:
+- JWT utilities
+- Token management
+- Session handling
+- Permission checks
+- Role-based access control
+
+SHARED CONSTANTS:
+-----------------
+API Endpoints:
+- Base URLs
+- API routes
+- Version prefixes
+- WebSocket endpoints
+
+Application Constants:
+- Feature flags
+- Configuration values
+- Default settings
+- Timeout values
+- Rate limits
+
+Error Codes:
+- HTTP status codes
+- Application error codes
+- Error messages
+- Localization keys
+
+TYPE DEFINITIONS:
+-----------------
+TypeScript Types:
+- User types
+- API request/response types
+- Database model types
+- Configuration types
+- Error types
+- AI model types
+
+Interfaces:
+- Service interfaces
+- Repository interfaces
+- Controller interfaces
+- Middleware interfaces
+
+SDK LIBRARIES:
+--------------
+JavaScript/TypeScript SDK:
+```typescript
+import { AEDIClient } from '@aedi/js-sdk';
+
+const client = new AEDIClient({
+  apiKey: 'your-api-key',
+  baseURL: 'https://api.aedi-platform.com'
+});
+
+// User management
+await client.users.get(userId);
+await client.users.update(userId, data);
+
+// AI features
+await client.ai.analyze(text);
+await client.ai.predict(data);
+
+// Real-time
+client.realtime.connect();
+client.realtime.on('message', handler);
+```
+
+Python SDK:
+```python
+from aedi_sdk import AEDIClient
+
+client = AEDIClient(
+    api_key='your-api-key',
+    base_url='https://api.aedi-platform.com'
+)
+
+# User management
+user = client.users.get(user_id)
+client.users.update(user_id, data)
+
+# AI features
+result = client.ai.analyze(text)
+prediction = client.ai.predict(data)
+```
+
+Mobile SDK (React Native):
+```typescript
+import { AEDIMobileClient } from '@aedi/mobile-sdk';
+
+const client = new AEDIMobileClient({
+  apiKey: 'your-api-key',
+  offlineMode: true
+});
+
+// Offline-first operations
+await client.users.get(userId); // Works offline
+await client.sync.start(); // Sync when online
+```
+
+AI UTILITIES:
+-------------
+Model Loading:
+- Model initialization
+- Model caching
+- Version management
+- Model switching
+
+Inference:
+- Batch inference
+- Real-time inference
+- Edge inference
+- Cloud inference
+
+Data Preprocessing:
+- Text tokenization
+- Image preprocessing
+- Data normalization
+- Feature extraction
+
+Postprocessing:
+- Result formatting
+- Confidence scoring
+- Output validation
+- Error handling
+
+API CLIENT:
+-----------
+HTTP Client:
+- Request/response interceptors
+- Automatic retries
+- Timeout handling
+- Error transformation
+- Request caching
+
+WebSocket Client:
+- Connection management
+- Reconnection logic
+- Event handling
+- Message queuing
+- Heartbeat mechanism
+
+GraphQL Client:
+- Query building
+- Mutation handling
+- Subscription support
+- Cache management
+- Error handling
+
+REACT HOOKS:
+------------
+Custom Hooks:
+```typescript
+// Authentication
+useAuth() - User authentication state
+usePermissions() - User permissions
+
+// API
+useAPI() - API client instance
+useFetch() - Data fetching
+useMutation() - Data mutations
+
+// AI
+useAI() - AI service access
+usePredict() - Prediction hook
+useAnalyze() - Analysis hook
+
+// Real-time
+useWebSocket() - WebSocket connection
+useRealtime() - Real-time updates
+
+// Offline
+useOfflineSync() - Offline sync state
+useNetworkStatus() - Network status
+```
+
+SHARED COMPONENTS:
+------------------
+UI Components (platform-agnostic):
+- Button
+- Input
+- Card
+- Modal
+- Loader
+- Alert
+- Table
+- Form
+
+AI Components:
+- ChatInterface
+- ImageUploader
+- VoiceRecorder
+- PredictionDisplay
+- AnalyticsChart
+
+CONFIGURATION:
+--------------
+Build Configuration:
+- Webpack config
+- Babel config
+- TypeScript config
+- ESLint config
+- Prettier config
+
+Environment:
+- Development
+- Staging
+- Production
+- Test
+
+SECURITY:
+---------
+Encryption:
+- Data encryption utilities
+- Password hashing
+- Token encryption
+- Secure storage
+
+Sanitization:
+- Input sanitization
+- XSS prevention
+- SQL injection prevention
+- HTML sanitization
+
+PERFORMANCE:
+------------
+Optimization:
+- Memoization utilities
+- Debounce/throttle
+- Lazy loading
+- Code splitting
+- Bundle optimization
+
+Caching:
+- Memory cache
+- LocalStorage cache
+- IndexedDB cache
+- Service worker cache
+
+TESTING UTILITIES:
+------------------
+Test Helpers:
+- Mock data generators
+- Test fixtures
+- API mocking
+- Component testing utilities
+- Integration test helpers
+
+GETTING STARTED:
+----------------
+Installation:
+```bash
+# JavaScript/TypeScript
+npm install @aedi/shared
+
+# Python
+pip install aedi-shared
+
+# React Native
+npm install @aedi/mobile-shared
+```
+
+Usage:
+```typescript
+// Import utilities
+import { validateEmail, formatDate } from '@aedi/shared/utils';
+import { API_ENDPOINTS } from '@aedi/shared/constants';
+import { User, ApiResponse } from '@aedi/shared/types';
+
+// Use in your code
+const isValid = validateEmail(email);
+const formatted = formatDate(date, 'YYYY-MM-DD');
+```
+
+VERSIONING:
+-----------
+- Semantic versioning (semver)
+- Changelog maintenance
+- Breaking changes documentation
+- Migration guides
+
+DOCUMENTATION:
+--------------
+- API documentation
+- Code examples
+- Best practices
+- Common patterns
+- Troubleshooting guides
+
+For detailed documentation, see /docs/shared/

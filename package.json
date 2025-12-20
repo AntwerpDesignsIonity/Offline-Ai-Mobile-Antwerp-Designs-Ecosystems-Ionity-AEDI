@@ -1,0 +1,71 @@
+{
+  "name": "aedi-platform",
+  "version": "1.0.0",
+  "description": "Offline AI Mobile Antwerp Designs Ecosystems Ionity - Full Stack Platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\" \"npm run dev:ai\"",
+    "dev:web": "cd web-apps && npm run dev",
+    "dev:api": "cd backend && npm run dev",
+    "dev:mobile": "cd mobile-apps && npm run dev",
+    "dev:ai": "cd ai-modules && python serve.py",
+    "build": "npm run build:web && npm run build:api",
+    "build:web": "cd web-apps && npm run build",
+    "build:api": "cd backend && npm run build",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest --coverage",
+    "test:integration": "jest --config jest.integration.config.js",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "docker:build": "docker-compose -f infrastructure/docker/compose/docker-compose.yml build",
+    "docker:up": "docker-compose -f infrastructure/docker/compose/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f infrastructure/docker/compose/docker-compose.yml down",
+    "k8s:deploy": "kubectl apply -f infrastructure/kubernetes/",
+    "migrate": "cd database && npm run migrate",
+    "seed": "cd database && npm run seed",
+    "deploy:staging": "npm run build && npm run deploy:k8s:staging",
+    "deploy:production": "npm run build && npm run deploy:k8s:production"
+  },
+  "keywords": [
+    "ai",
+    "machine-learning",
+    "full-stack",
+    "web-app",
+    "mobile-app",
+    "offline-first",
+    "microservices",
+    "kubernetes",
+    "react",
+    "node.js",
+    "python",
+    "tensorflow"
+  ],
+  "author": "Antwerp Designs Ionity",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
+    "pg": "^8.11.3",
+    "redis": "^4.6.10",
+    "socket.io": "^4.6.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.54.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

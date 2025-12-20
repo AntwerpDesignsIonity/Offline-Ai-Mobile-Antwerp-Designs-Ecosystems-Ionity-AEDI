@@ -1,0 +1,186 @@
+AI MODULES INDEX
+================
+
+This directory contains all AI/ML modules and integration components for the AEDI platform.
+
+STRUCTURE:
+----------
+/models/            - Trained AI/ML models
+  /nlp/             - Natural Language Processing models
+  /vision/          - Computer Vision models
+  /recommendation/  - Recommendation systems
+  /prediction/      - Predictive models
+  
+/training/          - Model training scripts
+/inference/         - Inference engines
+/preprocessing/     - Data preprocessing utilities
+/deployment/        - Model deployment configurations
+/monitoring/        - Model performance monitoring
+
+AI CAPABILITIES:
+----------------
+Natural Language Processing:
+- Text classification
+- Sentiment analysis
+- Named entity recognition
+- Language translation
+- Text summarization
+- Question answering
+- Chatbot conversations
+
+Computer Vision:
+- Image classification
+- Object detection
+- Face recognition
+- OCR (Optical Character Recognition)
+- Image segmentation
+- Video analysis
+- AR/VR integration
+
+Predictive Analytics:
+- Time series forecasting
+- Anomaly detection
+- Customer churn prediction
+- Demand forecasting
+- Risk assessment
+- Trend analysis
+
+Recommendation Systems:
+- Collaborative filtering
+- Content-based filtering
+- Hybrid approaches
+- Real-time recommendations
+- Personalization
+
+TECHNOLOGIES:
+-------------
+Frameworks:
+- TensorFlow 2.x
+- PyTorch 2.0+
+- scikit-learn
+- Hugging Face Transformers
+- ONNX Runtime
+- TensorFlow Lite
+- Core ML (iOS)
+
+Languages:
+- Python 3.11+
+- JavaScript/TypeScript (TensorFlow.js)
+- C++ (Performance-critical)
+
+Tools:
+- Jupyter Notebooks
+- MLflow for experiment tracking
+- Weights & Biases
+- TensorBoard
+- DVC (Data Version Control)
+
+MODELS INCLUDED:
+----------------
+NLP Models:
+- BERT for text understanding
+- GPT for text generation
+- Sentiment analysis classifier
+- Named entity recognition
+- Language translation
+
+Vision Models:
+- ResNet for image classification
+- YOLO for object detection
+- Face recognition (FaceNet)
+- OCR (Tesseract + custom models)
+- Image segmentation (U-Net)
+
+Custom Models:
+- User behavior prediction
+- Content recommendation
+- Anomaly detection
+- Performance optimization
+- Security threat detection
+
+MODEL DEPLOYMENT:
+-----------------
+Deployment Options:
+- TensorFlow Serving
+- ONNX Runtime
+- FastAPI endpoints
+- gRPC services
+- Edge deployment (mobile, IoT)
+
+Optimization:
+- Model quantization
+- Pruning
+- Knowledge distillation
+- TensorRT optimization
+- WebAssembly compilation
+
+TRAINING PIPELINE:
+------------------
+1. Data collection and preprocessing
+2. Feature engineering
+3. Model selection and architecture
+4. Training and validation
+5. Hyperparameter tuning
+6. Model evaluation
+7. Deployment and monitoring
+8. Continuous improvement
+
+DATA REQUIREMENTS:
+------------------
+- Training datasets in /data/
+- Validation and test sets
+- Data augmentation pipelines
+- Labeling and annotation tools
+- Privacy and compliance checks
+
+INFERENCE APIs:
+---------------
+Text Analysis:
+- POST /ai/nlp/analyze
+- POST /ai/nlp/sentiment
+- POST /ai/nlp/summarize
+
+Image Processing:
+- POST /ai/vision/classify
+- POST /ai/vision/detect
+- POST /ai/vision/ocr
+
+Predictions:
+- POST /ai/predict/timeseries
+- POST /ai/predict/anomaly
+- POST /ai/recommend
+
+MONITORING:
+-----------
+- Model performance metrics
+- Inference latency tracking
+- Accuracy monitoring
+- Drift detection
+- A/B testing framework
+- Feedback loop integration
+
+ETHICAL AI:
+-----------
+- Bias detection and mitigation
+- Explainable AI (XAI)
+- Privacy preservation
+- Fairness metrics
+- Responsible AI guidelines
+
+GETTING STARTED:
+----------------
+Training Models:
+1. cd /ai-modules/training/
+2. pip install -r requirements.txt
+3. python train_model.py --config config.yaml
+
+Running Inference:
+1. cd /ai-modules/inference/
+2. python serve_model.py --model-path ./models/
+
+Integration:
+- See /docs/ai-integration.md
+- API endpoints in /backend/api/ai/
+- SDKs in /shared/ai-sdk/
+
+For detailed documentation, see /docs/ai-modules/
