@@ -1,0 +1,61 @@
+{
+  "name": "offline-ai-copilot",
+  "version": "1.0.0",
+  "description": "Offline AI LLM CLI with GitHub Copilot features - works on any system including Android 7+",
+  "main": "dist/index.js",
+  "bin": {
+    "ai-copilot": "./dist/cli.js",
+    "offline-ai": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "server": "node dist/server.js",
+    "test": "jest",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "offline",
+    "copilot",
+    "github",
+    "cli",
+    "android",
+    "transformer",
+    "neural-network"
+  ],
+  "author": "Antwerp Designs Ionity",
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.15.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.5",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/inquirer": "^8.2.10",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "os": [
+    "linux",
+    "darwin",
+    "win32",
+    "android"
+  ]
+}
