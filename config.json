@@ -1,0 +1,18 @@
+{
+  "appName": "Offline AI Mobile AEDI",
+  "version": "1.0.0",
+  "installDirectories": {
+    "primary": "/United Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
+    "secondary": "/Programs/AntwerpDesigns/JWVA/Ionity/2025+/gitcat/Projects/",
+    "installSubpath": "Install/files"
+  },
+  "modelSettings": {
+    "blobFileFolder": "models/blobs",
+    "updateInterval": 3600000,
+    "offlineMode": true
+  },
+  "ui": {
+    "enableOfflineButton": true,
+    "defaultOfflineState": false
+  }
+}
