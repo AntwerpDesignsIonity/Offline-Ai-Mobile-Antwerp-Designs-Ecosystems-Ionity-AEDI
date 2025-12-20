@@ -8,7 +8,7 @@
  * Policy 986 AED Fines Apply
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
@@ -27,10 +27,10 @@ function App() {
 
   const [history, setHistory] = useState([]);
 
-  useEffect(() => {
-    // Initialize network monitor
-    const monitor = new NetworkMonitor();
+  // Create NetworkMonitor instance once
+  const monitor = useMemo(() => new NetworkMonitor(), []);
 
+  useEffect(() => {
     // Update network state
     const updateNetworkState = () => {
       const state = monitor.getCurrentState();
@@ -43,7 +43,7 @@ function App() {
     window.addEventListener('offline', updateNetworkState);
 
     // Check if Network Information API is available
-    if ('connection' in navigator) {
+    if (navigator.connection) {
       navigator.connection.addEventListener('change', updateNetworkState);
     }
 
@@ -57,12 +57,12 @@ function App() {
     return () => {
       window.removeEventListener('online', updateNetworkState);
       window.removeEventListener('offline', updateNetworkState);
-      if ('connection' in navigator) {
+      if (navigator.connection) {
         navigator.connection.removeEventListener('change', updateNetworkState);
       }
       clearInterval(interval);
     };
-  }, []);
+  }, [monitor]);
 
   return (
     <div className="App">

@@ -127,4 +127,6 @@ class NetworkMonitor {
   }
 }
 
+// Export both the class and a singleton instance for convenience
+export { NetworkMonitor };
 export default new NetworkMonitor();

@@ -5,12 +5,13 @@
  * License: CC0 1.0 Universal - Policy 986 AED Fines Apply
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import './Dashboard.css';
 import NetworkMonitor from '../services/NetworkMonitor';
 
 const Dashboard = ({ networkState, history }) => {
-  const monitor = new NetworkMonitor();
+  // Create NetworkMonitor instance once using useMemo
+  const monitor = useMemo(() => new NetworkMonitor(), []);
 
   const getStatusColor = () => {
     return networkState.online ? '#00C851' : '#ff4444';
