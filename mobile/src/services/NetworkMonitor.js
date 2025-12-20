@@ -127,6 +127,15 @@ class NetworkMonitor {
   }
 }
 
-// Export both the class and a singleton instance for convenience
+/**
+ * Export Patterns:
+ * 
+ * - NetworkMonitor (named export): Use this to create new instances for testing
+ *   or when you need isolated state. Example: new NetworkMonitor()
+ * 
+ * - default export: Singleton instance for general use throughout the app.
+ *   This ensures shared state for network monitoring across all components.
+ *   Example: import networkMonitor from './services/NetworkMonitor'
+ */
 export { NetworkMonitor };
 export default new NetworkMonitor();

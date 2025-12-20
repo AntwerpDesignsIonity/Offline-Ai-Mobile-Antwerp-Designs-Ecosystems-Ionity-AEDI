@@ -43,7 +43,7 @@ function App() {
     window.addEventListener('offline', updateNetworkState);
 
     // Check if Network Information API is available
-    if (navigator.connection) {
+    if (monitor.isNetworkInfoSupported() && navigator.connection) {
       navigator.connection.addEventListener('change', updateNetworkState);
     }
 
@@ -57,7 +57,7 @@ function App() {
     return () => {
       window.removeEventListener('online', updateNetworkState);
       window.removeEventListener('offline', updateNetworkState);
-      if (navigator.connection) {
+      if (monitor.isNetworkInfoSupported() && navigator.connection) {
         navigator.connection.removeEventListener('change', updateNetworkState);
       }
       clearInterval(interval);
