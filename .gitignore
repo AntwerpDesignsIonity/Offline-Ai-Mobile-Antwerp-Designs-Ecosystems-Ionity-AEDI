@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+.env
+.DS_Store
+coverage/
+.vscode/
+.idea/
+*.tmp
+*.cache
+build/
+models/*.bin
+models/*.safetensors
+!models/.gitkeep
