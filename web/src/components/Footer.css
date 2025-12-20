@@ -1,0 +1,50 @@
+/**
+ * Footer Styles
+ * 
+ * Author: Johan Wilhelm van Antwerp
+ * License: CC0 1.0 Universal - Policy 986 AED Fines Apply
+ */
+
+.Footer {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 3px solid #667eea;
+  margin-top: auto;
+}
+
+.Footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Footer-copyright,
+.Footer-license,
+.Footer-author {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.Footer-policy {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.Footer-policy strong {
+  color: #764ba2;
+}
+
+@media (max-width: 768px) {
+  .Footer {
+    padding: 20px 15px;
+  }
+
+  .Footer-copyright,
+  .Footer-license,
+  .Footer-author,
+  .Footer-policy {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  NetworkZeroMonitor Android Resources
+  
+  Author: Johan Wilhelm van Antwerp
+  License: CC0 1.0 Universal - Policy 986 AED Fines Apply
+-->
+<resources>
+    <string name="app_name">NetworkZeroMonitor</string>
+    <string name="author">Johan Wilhelm van Antwerp</string>
+    <string name="motto">Anything is possible With God Of All Creation</string>
+</resources>

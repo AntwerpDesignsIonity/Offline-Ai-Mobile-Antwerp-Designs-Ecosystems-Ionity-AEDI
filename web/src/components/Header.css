@@ -1,0 +1,63 @@
+/**
+ * Header Styles
+ * 
+ * Author: Johan Wilhelm van Antwerp
+ * License: CC0 1.0 Universal - Policy 986 AED Fines Apply
+ */
+
+.Header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Header-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.Header-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  opacity: 0.95;
+}
+
+.Header-author {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  opacity: 0.9;
+}
+
+.Header-motto {
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    padding: 30px 15px;
+  }
+
+  .Header-title {
+    font-size: 2rem;
+  }
+
+  .Header-subtitle {
+    font-size: 1rem;
+  }
+
+  .Header-author,
+  .Header-motto {
+    font-size: 0.75rem;
+  }
+}

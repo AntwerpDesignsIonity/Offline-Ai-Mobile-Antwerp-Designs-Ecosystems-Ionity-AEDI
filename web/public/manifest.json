@@ -1,0 +1,17 @@
+{
+  "short_name": "NetworkZeroMonitor",
+  "name": "NetworkZeroMonitor - Network Monitoring Application",
+  "description": "Cross-platform network monitoring with real-time analytics",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#007AFF",
+  "background_color": "#ffffff",
+  "author": "Johan Wilhelm van Antwerp"
+}
